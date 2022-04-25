@@ -10,24 +10,16 @@ class ClientSimple {
         DataInputStream userInput;
         PrintStream theOutputStream;
 
-        try
-
-        {
-
-            if( args.length>=1 )
-
-                hote = InetAddress.getByName( args[0] );
-
-            else
-
+        try {
+//            if( args.length>=1 )
+//                hote = InetAddress.getByName( args[0] );
+//            else
                 hote = InetAddress.getLocalHost();
 
-
-
-            if( args.length==2 )
-
-                port  = Integer.parseInt( args[1] ) ;
-
+//            if( args.length==2 )
+//
+//                port  = Integer.parseInt( args[1] ) ;
+//
         }
 
         catch(UnknownHostException e) {}
@@ -36,9 +28,10 @@ class ClientSimple {
             socket = new Socket(hote, port);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintStream out = new PrintStream(socket.getOutputStream());
-            out.println("client pret");
+            out.println(args[0]);
             System.out.println(in.readLine());}
         catch (Exception e) {
+            System.out.println("erreur");
             e.printStackTrace();
         }
 
