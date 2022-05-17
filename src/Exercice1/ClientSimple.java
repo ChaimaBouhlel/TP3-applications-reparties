@@ -1,3 +1,5 @@
+package Exercice1;
+
 import java.net.*;
 import java.io.*;
 
@@ -6,9 +8,6 @@ class ClientSimple {
     public static void main(String[] args) {
         int port = 1973;
         InetAddress hote = null;
-        Socket socket = null;
-        DataInputStream userInput;
-        PrintStream theOutputStream;
 
         try {
 //            if( args.length>=1 )
@@ -22,10 +21,12 @@ class ClientSimple {
 //
         }
 
-        catch(UnknownHostException e) {}
+        catch(UnknownHostException e) {
+            e.printStackTrace();
+        }
 
         try {
-            socket = new Socket(hote, port);
+            Socket socket = new Socket(hote, port);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintStream out = new PrintStream(socket.getOutputStream());
             out.println(args[0]);
